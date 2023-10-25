@@ -7,8 +7,8 @@ import requests
 import platform
 import os
 
-TOKEN = '5599872595:AAF6GZ7vzvTj6to5RO0zFuM37Y54hB-hEzs'
-CHAT_ID = '1158017810'
+TOKEN = 'токен тг бота'
+CHAT_ID = 'Ваш id'
 bot = telebot.TeleBot(TOKEN)
 
 requests.post(f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text=Online')
